@@ -1,14 +1,17 @@
 import pymysql
 import os
+from dotenv import load_dotenv
 from model import Student, Responsable
+
+load_dotenv()
 
 connection = pymysql.connect(
     database= os.getenv("DATABASE"),
     user= os.getenv("DB_USER"),
     password= os.getenv("DB_PASSWORD"),
     host= os.getenv("DB_HOST"),
-    port= os.getenv("DB_PORT"),
-    charset=os.getevn("DB_CHARSET"),
+    port= int(os.getenv("DB_PORT")),
+    charset=os.getenv("DB_CHARSET"),
     cursorclass= pymysql.cursors.DictCursor,
 )
 
